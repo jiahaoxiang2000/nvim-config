@@ -255,6 +255,34 @@ require('lazy').setup({
     },
   },
   {
+    'lervag/vimtex',
+    lazy = false, -- we don't want to lazy load VimTeX
+    -- tag = "v2.15", -- uncomment to pin to a specific release
+    init = function()
+      -- VimTeX general settings
+      vim.g.vimtex_view_method = 'skim' -- Use Skim for viewing PDFs
+      vim.g.vimtex_view_skim_sync = 1 -- Enable forward search
+      vim.g.vimtex_view_skim_activate = 1 -- Bring Skim to the foreground on compile
+      vim.g.vimtex_quickfix_mode = 0 -- disabled quickly window by defualt
+
+      -- Configure latexmk to handle custom sequences
+      vim.g.vimtex_compiler_latexmk = {
+        build_dir = 'build', -- Output directory (empty for default)
+        callback = 1, -- Enable callbacks
+        continuous = 0, -- Disable continuous compilation
+        executable = 'latexmk', -- Use latexmk as the compiler
+        options = {
+          '-synctex=1', -- Enable synctex for forward and inverse search
+          '-interaction=nonstopmode', -- Nonstop error handling
+          '-file-line-error', -- Show file and line numbers for errors
+          '-pdf', -- Generate PDF output
+          '-pdflatex="xelatex %O %S"', -- Use xelatex as the LaTeX engine
+          '-use-make', -- Enable makefile integration
+        },
+      }
+    end,
+  },
+  {
     'nvim-neotest/neotest',
     dependencies = {
       'nvim-neotest/nvim-nio',
