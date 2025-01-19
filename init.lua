@@ -255,6 +255,34 @@ require('lazy').setup({
     },
   },
   {
+    'nvim-neotest/neotest',
+    dependencies = {
+      'nvim-neotest/nvim-nio',
+      'nvim-lua/plenary.nvim',
+      'antoinemadec/FixCursorHold.nvim',
+      'nvim-neotest/neotest-python',
+      'nvim-treesitter/nvim-treesitter',
+    },
+    config = function()
+      require('neotest').setup {
+        adapters = {
+          require 'neotest-python' {
+            dap = { justMyCode = false }, -- Enable debugging
+            runner = 'unittest', -- Set the test runner
+          },
+        },
+      }
+
+      -- Key mappings for neotest
+      local opts = { noremap = true, silent = true }
+      vim.api.nvim_set_keymap('n', '<leader>tn', ":lua require('neotest').run.run()<CR>", opts) -- Run the nearest test
+      vim.api.nvim_set_keymap('n', '<leader>tf', ":lua require('neotest').run.run(vim.fn.expand('%'))<CR>", opts) -- Run all tests in the current file
+      vim.api.nvim_set_keymap('n', '<leader>ts', ":lua require('neotest').summary.toggle()<CR>", opts) -- Toggle test summary
+      vim.api.nvim_set_keymap('n', '<leader>to', ":lua require('neotest').output.open()<CR>", opts) -- Open test output
+      vim.api.nvim_set_keymap('n', '<leader>tr', ":lua require('neotest').run.run_last()<CR>", opts) -- Re-run the last test
+    end,
+  },
+  {
     'linux-cultist/venv-selector.nvim',
     dependencies = {
       'neovim/nvim-lspconfig',
