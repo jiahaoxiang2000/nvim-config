@@ -4,4 +4,4 @@
 
 local opt = vim.opt
 
-opt.wrap = true -- Disable line wrap
+opt.wrap = true -- enabled line wrap
