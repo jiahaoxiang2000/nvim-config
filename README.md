@@ -3,6 +3,6 @@
 A starter template for [LazyVim](https://github.com/LazyVim/LazyVim).
 Refer to the [documentation](https://lazyvim.github.io/installation) to get started.
 
-## Gold
+## Goal
 
-using the no mouse operation on coding, let us more effecing on work.
+Using no mouse operation while coding allows us to be more efficient at work.
