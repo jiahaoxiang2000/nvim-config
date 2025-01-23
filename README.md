@@ -5,4 +5,5 @@ Refer to the [documentation](https://lazyvim.github.io/installation) to get star
 
 ## Goal
 
-Using no mouse operation while coding allows us to be more efficient at work.
+Using **no mouse** operation while coding allows us to be more efficient at work.
+And let the  **plugin** can easy modify and extend.
