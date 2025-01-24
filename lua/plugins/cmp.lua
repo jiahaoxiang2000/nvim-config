@@ -2,7 +2,15 @@ return {
   {
     "saghen/blink.cmp",
     -- optional: provides snippets for the snippet source
-    dependencies = "rafamadriz/friendly-snippets",
+    dependencies = {
+      "rafamadriz/friendly-snippets",
+      {
+        "saghen/blink.compat", -- Compatibility layer for using nvim-cmp sources on blink.cmp
+        optional = true, -- make optional so it's only enabled if any extras need it
+        opts = {},
+        version = not vim.g.lazyvim_blink_main and "*",
+      },
+    },
 
     -- use a release tag to download pre-built binaries
     version = "*",
@@ -39,18 +47,29 @@ return {
         -- Sets the fallback highlight groups to nvim-cmp's highlight groups
         -- Useful for when your theme doesn't support blink.cmp
         -- Will be removed in a future release
-        use_nvim_cmp_as_default = true,
+        use_nvim_cmp_as_default = false,
         -- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
         -- Adjusts spacing to ensure icons are aligned
         nerd_font_variant = "mono",
       },
-
+      snippets = {
+        expand = function(snippet)
+          -- for use the lazyvim cmp s
+          return LazyVim.cmp.expand(snippet)
+        end,
+      },
       -- Default list of enabled providers defined so that you can extend it
       -- elsewhere in your config, without redefining it, due to `opts_extend`
       sources = {
+        compat = {},
         default = { "lsp", "path", "snippets", "buffer" },
+        cmdline = {},
       },
     },
-    opts_extend = { "sources.default" },
+    opts_extend = {
+      "sources.completion.enabled_providers",
+      "sources.compat",
+      "sources.default",
+    },
   },
 }
