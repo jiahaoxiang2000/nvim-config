@@ -10,5 +10,10 @@ And let the  **plugin** can easy modify and extend.
 
 ## Issue
 
-- FIXME: the Document scrolled not work by the <c-u> and <c-d> key.
-- FIXME: on the command line, the <c-u> and <c-d> key not work.
+- FIXME: Document Scrolling Issue
+  - The <c-u> and <c-d> keys do not work for scrolling the document.
+- FIXME: Command Line Issue
+  - The <c-u> and <c-d> keys do not work in the command line.
+- NOTE: Configuration Override
+  - If you add custom configurations to lua/plugins/*.lua, it will override the default LazyVim configuration.
+  - If you do not properly handle the configuration to preserve LazyVim's defaults, some features that rely on integrations with other plugins in the LazyVim ecosystem may break.
