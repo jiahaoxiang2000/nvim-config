@@ -1,4 +1,4 @@
 return {
   -- disable trouble
-  { "CopilotC-Nvim/CopilotChat.nvim", enabled = false },
+  -- { "CopilotC-Nvim/CopilotChat.nvim", enabled = false },
 }
