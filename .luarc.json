@@ -1,0 +1,10 @@
+{
+    "workspace.library": [
+      "/opt/homebrew/Cellar/neovim/0.10.3/share/nvim/runtime/lua",
+      "~/.vscode/extensions/asvetliakov.vscode-neovim-1.18.15/runtime/lua"
+    ],
+    "runtime.version": "LuaJIT",
+    "diagnostics": {
+      "globals": ["vim"]
+    }
+  }
