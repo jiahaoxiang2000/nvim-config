@@ -5,3 +5,5 @@
 local map = vim.keymap.set
 
 -- map({ "n", "x" }, "k", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true }) -- like this to change overwiew the keyboard map
+
+-- achieve the ctrl + s to save the file
