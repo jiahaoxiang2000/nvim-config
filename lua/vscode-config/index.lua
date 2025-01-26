@@ -16,7 +16,6 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Load basic configurations
 require("vscode-config.config.options")
-
 -- Initialize lazy.nvim
 require("lazy").setup({
     spec = {
