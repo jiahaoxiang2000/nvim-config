@@ -1,10 +1,48 @@
--- this is the vscode neovim configuration files
+-- VSCode Neovim configuration
 
--- NOTE: Specifically, you don't need any code highlighting, completion, LSP plugins, or plugins that spawn windows/buffers (nerdtree , fuzzy-finders, etc).
--- Most navigation/textobject/editing plugins should be fine.
+-- Bootstrap lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable",
+        lazypath,
+    })
+end
+vim.opt.rtp:prepend(lazypath)
 
--- example of the coded 
--- local levels = vim.log.levels
--- local vscode = require('vscode')
+-- Load basic configurations
+require("vscode-config.config.options")
 
--- vscode.notify('Welcome to vscode-neovim supported by isomo', levels.INFO)
+-- Initialize lazy.nvim
+require("lazy").setup({
+    spec = {
+        { import = "vscode-config.plugins" },
+    },
+    defaults = {
+        lazy = true,
+    },
+    install = {
+        missing = true,
+    },
+    checker = {
+        enabled = false,
+    },
+    performance = {
+        rtp = {
+            disabled_plugins = {
+                "gzip",
+                "matchit",
+                "matchparen",
+                "netrwPlugin",
+                "tarPlugin",
+                "tohtml",
+                "tutor",
+                "zipPlugin",
+            },
+        },
+    },
+})
