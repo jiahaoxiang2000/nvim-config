@@ -1,5 +1,6 @@
+--luacheck: globals vim
 if vim.g.vscode then
-    require("vscode.index")
+    require("vscode-config.index")
 else
     require("config.lazy")
 end
