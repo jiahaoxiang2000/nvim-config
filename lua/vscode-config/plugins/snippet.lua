@@ -1,5 +1,5 @@
 -- the snippet not compatible with the `cmp`, so now we closed the snippets
-
+return {}
 -- return {
 --     -- Your existing LazyVim plugins
 --     {
