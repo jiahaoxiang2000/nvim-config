@@ -31,7 +31,7 @@ vscode-config/
   - `R` - Treesitter search (visual/operator-pending mode)
   - `<C-s>` - Toggle flash search (command mode)
 
-- **Text Surround Operations**: Enhanced with `nvim-surround`
+- **Text Surround Operations**: Enhanced with `[nvim-surround](https://github.com/kylechui/nvim-surround)`
 
   - `ys` - Add surround in normal mode
   - `yss` - Add surround to current line
@@ -58,9 +58,21 @@ vscode-config/
 - Auto-discovery of plugin files in the `plugins/` directory
 - Disabled unnecessary default vim plugins for VSCode environment
 
+- **Multi-cursor Operations**: Enhanced with `[vscode-multi-cursor.nvim](https://github.com/vscode-neovim/vscode-multi-cursor.nvim)`
+  - `mc` - Create cursor at current position
+  - `mcc` - Cancel/Clear all cursors
+  - `mi` - Start cursors on the left
+  - `mI` - Start cursors on the left edge
+  - `ma` - Start cursors on the right
+  - `mA` - Start cursors on the right edge
+  - `[mc` - Go to previous cursor
+  - `]mc` - Go to next cursor
+  - `mcs` - Create cursor using flash navigation
+  - `mcw` - Create selection using flash navigation
+  - `mciw*` - Select word under cursor and search for next occurrence
+
 ### ⚠️ Currently Disabled Features
 
-- **Multi-cursor support**: Commented out due to compatibility issues
 - **Snippet support**: Disabled due to conflicts with completion systems
 
 ## Mode Reference
