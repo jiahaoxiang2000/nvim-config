@@ -1,5 +1,3 @@
-local M = {}
-
 -- Get the directory of the current file
 local current_file = debug.getinfo(1, "S").source:sub(2)
 local current_dir = vim.fn.fnamemodify(current_file, ":h")
