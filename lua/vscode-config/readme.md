@@ -21,7 +21,7 @@ vscode-config/
 
 ## Current Features
 
-### ✅ Implemented Features
+### ✅ Supported Features
 
 - **Flash Navigation**: Use `[flash.nvim](https://github.com/folke/flash.nvim)` for quick character-based navigation
 
@@ -41,10 +41,23 @@ vscode-config/
   - `cs` - Change surround
   - Aliases: `b` **x**, `i` _x_
 
+- **Multi-cursor Operations**: Enhanced with `[vscode-multi-cursor.nvim](https://github.com/vscode-neovim/vscode-multi-cursor.nvim)`
+
+- `mc` - Create cursor at current position
+- `mcc` - Cancel/Clear all cursors
+- `mi` - Start cursors on the left
+- `mI` - Start cursors on the left edge
+- `ma` - Start cursors on the right
+- `mA` - Start cursors on the right edge
+- `[mc` - Go to previous cursor
+- `]mc` - Go to next cursor
+- `mcs` - Create cursor using flash navigation
+- `mcw` - Create selection using flash navigation
+- `mciw*` - Select word under cursor and search for next occurrence
+
 - **Editing Enhancements**:
 
   - `vim-surround` - Additional surround operations
-  - `ReplaceWithRegister` - Replace text with register content
   - `vim-repeat` - Repeat plugin actions with `.`
 
 - **Basic Configuration**:
@@ -57,19 +70,6 @@ vscode-config/
 - Lazy loading enabled for better performance
 - Auto-discovery of plugin files in the `plugins/` directory
 - Disabled unnecessary default vim plugins for VSCode environment
-
-- **Multi-cursor Operations**: Enhanced with `[vscode-multi-cursor.nvim](https://github.com/vscode-neovim/vscode-multi-cursor.nvim)`
-  - `mc` - Create cursor at current position
-  - `mcc` - Cancel/Clear all cursors
-  - `mi` - Start cursors on the left
-  - `mI` - Start cursors on the left edge
-  - `ma` - Start cursors on the right
-  - `mA` - Start cursors on the right edge
-  - `[mc` - Go to previous cursor
-  - `]mc` - Go to next cursor
-  - `mcs` - Create cursor using flash navigation
-  - `mcw` - Create selection using flash navigation
-  - `mciw*` - Select word under cursor and search for next occurrence
 
 ### ⚠️ Currently Disabled Features
 
