@@ -23,7 +23,7 @@ vscode-config/
 
 ### ✅ Implemented Features
 
-- **Flash Navigation**: Use `flash.nvim` for quick character-based navigation
+- **Flash Navigation**: Use `[flash.nvim](https://github.com/folke/flash.nvim)` for quick character-based navigation
 
   - `s` - Flash jump
   - `S` - Flash treesitter
@@ -39,7 +39,7 @@ vscode-config/
   - `S` - Add surround in visual mode
   - `ds` - Delete surround
   - `cs` - Change surround
-  - Aliases: `a` (>), `b` (), `B` {}, `q` ", `s` []
+  - Aliases: `b` **x**, `i` _x_
 
 - **Editing Enhancements**:
 
@@ -48,8 +48,6 @@ vscode-config/
   - `vim-repeat` - Repeat plugin actions with `.`
 
 - **Basic Configuration**:
-  - Leader key: `<Space>`
-  - Local leader: `\`
   - Clipboard integration with system clipboard
   - Smart case-insensitive search
 
