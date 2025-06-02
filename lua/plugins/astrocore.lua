@@ -31,7 +31,7 @@ return {
         number = true, -- sets vim.opt.number
         spell = false, -- sets vim.opt.spell
         signcolumn = "yes", -- sets vim.opt.signcolumn to yes
-        wrap = false, -- sets vim.opt.wrap
+        wrap = true, -- sets vim.opt.wrap
         wrapscan = false, -- sets vim.opt.wrapscan
       },
       g = { -- vim.g.<key>
@@ -115,27 +115,6 @@ return {
         ["<Leader>,dc"] = { "<cmd>diffoff!<cr>", desc = "diffoff" },
         ["<Leader>,dg"] = { "<cmd>diffget<cr>", desc = "diffget" },
         ["<Leader>,dp"] = { "<cmd>diffput<cr>", desc = "diffput" },
-        ["<Leader>,x"] = {
-          function()
-            local code = xtools.get_buf_content()
-            xtools.xtools_exec_vertical(code)
-          end,
-          desc = "xtools exec vertical",
-        },
-        ["<Leader>,f"] = {
-          function()
-            local code = xtools.get_buf_content()
-            xtools.xtools_exec_float(code)
-          end,
-          desc = "xtools exec float",
-        },
-        ["<Leader>,v"] = {
-          function()
-            local code = xtools.get_buf_content()
-            xtools.xtools_eval(code)
-          end,
-          desc = "xtools eval",
-        },
         ["<Leader>,z"] = {
           "<cmd>%lua<cr>",
           desc = "lua exec",
@@ -158,16 +137,6 @@ return {
           end,
           desc = "ToggleTerm shell",
         },
-        ["<Leader>,S"] = {
-          function()
-            xtools.new_term_cmd_vertical {
-              cmd = "xs",
-              display_name = "xtools",
-            }
-          end,
-          desc = "ToggleTerm xtools (python)",
-        },
-
         ["<Leader>,1"] = {
           '<cmd>let @+ = expand("%:p:h")<cr><cmd>echo expand("%:p:h")<cr>',
           desc = "Yank directory path",
@@ -210,27 +179,6 @@ return {
         ["<M-a>"] = { "<cmd>normal %<cr>", desc = "Next matchup" },
 
         ["<Leader>,"] = { name = "Local" },
-        ["<Leader>,x"] = {
-          function()
-            local code = xtools.get_vbuf_content()
-            xtools.xtools_exec_vertical(code)
-          end,
-          desc = "xtools exec vertical",
-        },
-        ["<Leader>,f"] = {
-          function()
-            local code = xtools.get_vbuf_content()
-            xtools.xtools_exec_float(code)
-          end,
-          desc = "xtools exec float",
-        },
-        ["<Leader>,v"] = {
-          function()
-            local code = xtools.get_vbuf_content()
-            xtools.xtools_eval(code)
-          end,
-          desc = "xtools eval",
-        },
         ["<Leader>,z"] = {
           "<Esc><cmd>'<,'>%lua<cr>",
           desc = "lua exec",

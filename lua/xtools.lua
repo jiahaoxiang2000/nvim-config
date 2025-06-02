@@ -175,27 +175,5 @@ function M.new_term_cmd_float(opts)
 end
 
 ------------------------------------------------------------------------------
--- xtools
-
-function M.adjust_path_from_clip() return M.run "xt -b c2V0X2NsaXAoZmwwKGdldF9jbGlwKCkpKQ==" end
-
-function M.xtools_exec_float(code)
-  M.set_clip(code)
-  M.new_term_cmd_float { cmd = "xt -c -d", display_name = "xtools_exec", close_on_exit = false }
-end
-
-function M.xtools_exec_vertical(code)
-  M.set_clip(code)
-  M.new_term_cmd_vertical { cmd = "xt -c -d", display_name = "xtools_exec", close_on_exit = false }
-end
-
-function M.xtools_eval(code)
-  M.set_clip(code)
-  vim.fn.system "xt -c -e clip -d"
-  vim.wait(100)
-  M.winf(M.get_clip())
-end
-
-------------------------------------------------------------------------------
 
 return M

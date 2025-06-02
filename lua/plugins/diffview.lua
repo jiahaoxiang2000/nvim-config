@@ -154,27 +154,12 @@ return {
       file_panel = {
         {
           "n",
-          "<M-p>",
+          "<M-e>",
           function()
-            require("diffview.actions").view_windo(function(_, sym)
-              if sym == "b" then
-                vim.cmd "norm! [c"
-                vim.cmd "norm! zz"
-              end
-            end)()
+            require("diffview.actions").close()
+            vim.api.nvim_command "2wincmd l"
           end,
-        },
-        {
-          "n",
-          "<M-n>",
-          function()
-            require("diffview.actions").view_windo(function(_, sym)
-              if sym == "b" then
-                vim.cmd "norm! ]c"
-                vim.cmd "norm! zz"
-              end
-            end)()
-          end,
+          { desc = "Goto current file" },
         },
         { "n", "<M-q>", function() vim.cmd "DiffviewClose" end, { desc = "Diffview close" } },
         {
@@ -433,3 +418,4 @@ return {
     },
   },
 }
+
