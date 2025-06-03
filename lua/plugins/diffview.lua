@@ -3,6 +3,13 @@ return {
   event = "User AstroGitFile",
   cmd = { "DiffviewOpen" },
   opts = {
+    hooks = {
+      diff_buf_read = function()
+        vim.cmd("highlight DiffAdd guifg=#0000FF guibg=#002200")
+        vim.cmd("highlight DiffChange guifg=#FFFF00 guibg=#222200")
+        vim.cmd("highlight DiffDelete guifg=#FF0000 guibg=#220000")
+      end,
+    },
     keymaps = {
       disable_defaults = true, -- Disable the default keymaps
       view = {
@@ -408,7 +415,7 @@ return {
       default = { winbar_info = true },
       file_history = { winbar_info = true },
     },
-    hooks = { diff_buf_read = function(bufnr) vim.b[bufnr].view_activated = false end },
+    -- hooks = { diff_buf_read = function(bufnr) vim.b[bufnr].view_activated = false end },
   },
   specs = {
     {
