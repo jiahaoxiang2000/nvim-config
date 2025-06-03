@@ -25,12 +25,8 @@ return {
     { "AstroNvim/astrocore", opts = function(_, opts) opts.mappings.n[prefix] = { desc = " Avante" } end },
   },
   opts = {
-    ---@alias Provider "claude" | "openai" | "azure" | "gemini" | "cohere" | "copilot" | string
-    provider = "copilot", -- The provider used in Aider mode or in the planning phase of Cursor Planning Mode
     ---@alias Mode "agentic" | "legacy"
     mode = "agentic", -- The default mode for interaction. "agentic" uses tools to automatically generate code, "legacy" uses the old planning method to generate code.
-    auto_suggestions_provider = "copilot",
-    cursor_applying_provider = "copilot", -- The provider used in the applying phase of Cursor Pl
     behaviour = {
       auto_suggestions = true, -- Experimental stage
       auto_set_highlight_group = true,
@@ -95,6 +91,7 @@ return {
           opts = {
             provider = "copilot",
             auto_suggestions_provider = "copilot",
+            cursor_applying_provider = "copilot", -- The provider used in the applying phase of Cursor Pl
           },
         },
       },
