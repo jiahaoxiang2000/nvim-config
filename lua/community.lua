@@ -23,4 +23,6 @@ return {
   { import = "astrocommunity.color.transparent-nvim" },
   { import = "astrocommunity.colorscheme.catppuccin" },
   { import = "astrocommunity.utility.noice-nvim" },
+
+  { import = "astrocommunity.recipes.ai" },
 }
