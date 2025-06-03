@@ -20,8 +20,6 @@ return {
   { import = "astrocommunity.project.projectmgr-nvim" },
   { import = "astrocommunity.editing-support.wildfire-nvim" },
 
-  { import = "astrocommunity.completion.copilot-lua" },
-
   { import = "astrocommunity.color.transparent-nvim" },
   { import = "astrocommunity.colorscheme.catppuccin" },
   { import = "astrocommunity.utility.noice-nvim" },

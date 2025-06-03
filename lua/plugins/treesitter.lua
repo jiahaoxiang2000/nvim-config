@@ -39,7 +39,7 @@ return {
         goto_next_start = {
           ["<M-x>"] = { query = "@block.outer", desc = "Next block start" },
           ["<M-N>"] = { query = "@function.outer", desc = "Next function start" },
-          ["<M-l>"] = { query = "@call.outer", desc = "Next callsite start" },
+          -- ["<M-l>"] = { query = "@call.outer", desc = "Next callsite start" },
           ["<M-v>"] = { query = "@conditional.outer", desc = "Next conditional start" },
           ["<M-g>"] = { query = "@loop.outer", desc = "Next loop start" },
           ["<M-z>"] = { query = "@class.outer", desc = "Next class start" },
@@ -71,7 +71,7 @@ return {
           ["<M-X>"] = { query = "@block.outer", desc = "Previous block start" },
           ["<M-P>"] = { query = "@function.outer", desc = "Previous function start" },
           ["<M-b>"] = { query = "@parameter.inner", desc = "Previous argument start" },
-          ["<M-h>"] = { query = "@call.outer", desc = "Previous callsite start" },
+          -- ["<M-h>"] = { query = "@call.outer", desc = "Previous callsite start" },
           ["<M-V>"] = { query = "@conditional.outer", desc = "Previous conditional start" },
           ["<M-G>"] = { query = "@loop.outer", desc = "Previous loop start" },
           ["<M-Z>"] = { query = "@class.outer", desc = "Previous class start" },
