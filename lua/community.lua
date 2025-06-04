@@ -7,13 +7,14 @@
 ---@type LazySpec
 return {
   "AstroNvim/astrocommunity",
+  -- language packs
   { import = "astrocommunity.pack.lua" },
+  { import = "astrocommunity.pack.markdown" },
 
   { import = "astrocommunity.git.blame-nvim" },
   { import = "astrocommunity.git.git-blame-nvim" },
-  { import = "astrocommunity.git.gitgraph-nvim" },
+  { import = 'astrocommunity.git.gitgraph-nvim' },
 
-  { import = "astrocommunity.motion.nvim-surround" },
   { import = "astrocommunity.motion.vim-matchup" },
   { import = "astrocommunity.motion.marks-nvim" },
 
@@ -25,5 +26,5 @@ return {
   { import = "astrocommunity.utility.noice-nvim" },
 
   { import = "astrocommunity.recipes.ai" },
-  { import = "astrocommunity.pack.markdown" },
+
 }
