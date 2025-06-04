@@ -6,3 +6,4 @@ Refer to the [documentation](https://lazyvim.github.io/installation) to get star
 ## Reference
 
 - [AstroNvim (@wzj-zz)](https://github.com/wzj-zz/AstroNvim)
+- [astrocommunity](https://github.com/AstroNvim/astrocommunity) 
