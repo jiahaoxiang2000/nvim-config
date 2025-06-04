@@ -25,4 +25,5 @@ return {
   { import = "astrocommunity.utility.noice-nvim" },
 
   { import = "astrocommunity.recipes.ai" },
+  { import = "astrocommunity.pack.markdown" },
 }
