@@ -17,11 +17,12 @@ return {
       ---@param opts AstroCoreOpts
       opts = function(_, opts)
         local maps = opts.mappings
-        maps.n["<leader>a"] = { desc = "󰚩 " .. "AI" }
-        maps.v["<leader>a"] = { desc = "󰚩 " .. "AI" }
-        maps.v["<leader>at"] = { "<cmd>CodeCompanionChat Toggle<cr>", desc = "Toggle code companion" }
-        maps.n["<leader>aa"] = { "<cmd>CodeCompanionActions<cr>", desc = "code companion actions" }
-        maps.v["ga"] = { "<cmd>codecompanionAdd<cr>", desc = "add selected content as chat context" }
+        if maps then
+          maps.n["<leader>a"] = { desc = "󰚩 " .. "AI" }
+          maps.n["<leader>at"] = { "<cmd>CodeCompanionChat Toggle<cr>", desc = "Toggle code companion" }
+          maps.n["<leader>aa"] = { "<cmd>CodeCompanionActions<cr>", desc = "code companion actions" }
+          maps.v["ga"] = { "<cmd>codecompanionAdd<cr>", desc = "add selected content as chat context" }
+        end
       end,
     },
   },
