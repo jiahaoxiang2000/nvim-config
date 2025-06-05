@@ -91,10 +91,6 @@ return {
         ["<S-M-i>"] = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
         ["<S-M-u>"] = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
 
-        -- mappings under group name "Code"
-        ["<Leader>a"] = { name = "Code" },
-        ["<Leader>aa"] = { "<cmd>InspectTree<cr>", desc = "Show AST" },
-
         -- mappings under group name "Find"
         ["<Leader>fl"] = { function() require("telescope.builtin").filetypes() end, desc = "Select Language" },
 
