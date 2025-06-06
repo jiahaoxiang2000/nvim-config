@@ -25,7 +25,11 @@ return {
           maps.n["<leader>at"] = { "<cmd>CodeCompanionChat Toggle<cr>", desc = "Toggle code companion" }
           maps.v["<leader>at"] = { "<cmd>CodeCompanionChat Toggle<cr>", desc = "Toggle code companion" }
 
-          maps.v["ga"] = { "<cmd>codecompanionAdd<cr>", desc = "add selected content as chat context" }
+          maps.n["<leader>ac"] = { "<cmd>CodeCompanion /commit<cr>", desc = "generate commit message" }
+
+          maps.v["ga"] = { "<cmd>CodeCompanionChat Add<cr>", desc = "add selected content as chat context" }
+
+          vim.cmd([[cab cc CodeCompanion]])
         end
       end,
     },
