@@ -104,9 +104,6 @@ return {
         show_token_count = true, -- Show the token count for each response?
         start_in_insert_mode = true,
       },
-      diff = {
-        provider = "mini_diff",
-      },
     },
     opts = {
       log_level = "ERROR",
