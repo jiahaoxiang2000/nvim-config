@@ -14,6 +14,12 @@ return {
     },
     { "echasnovski/mini.diff", opts = {} },
     {
+      "Davidyz/VectorCode",
+      version = "*", -- optional, depending on whether you're on nightly or release
+      -- build = "pipx upgrade vectorcode", -- optional but recommended. This keeps your CLI up-to-date.
+      dependencies = { "nvim-lua/plenary.nvim" },
+    },
+    {
       "AstroNvim/astrocore",
       ---@param opts AstroCoreOpts
       opts = function(_, opts)
@@ -127,6 +133,11 @@ return {
             make_vars = true,
             make_slash_commands = true,
             show_result_in_chat = true,
+          },
+        },
+        vectorcode = {
+          opts = {
+            add_tool = true,
           },
         },
       },
