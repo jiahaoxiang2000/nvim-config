@@ -21,8 +21,8 @@ return {
         if maps then
           maps.n["<leader>a"] = { desc = "󰚩 " .. "AI" }
 
-          maps.n["<leader>at"] = { "<cmd>CodeCompanionActions<cr>", desc = "code companion actions" }
-          maps.v["<leader>at"] = { "<cmd>CodeCompanionActions<cr>", desc = "code companion actions" }
+          maps.n["<leader>ap"] = { "<cmd>CodeCompanionActions<cr>", desc = "code actions plane" }
+          maps.v["<leader>ap"] = { "<cmd>CodeCompanionActions<cr>", desc = "code actions plane" }
 
           maps.n["<leader>aa"] = { "<cmd>CodeCompanionChat Toggle<cr>", desc = "Toggle code companion" }
           maps.v["<leader>aa"] = { "<cmd>CodeCompanionChat Toggle<cr>", desc = "Toggle code companion" }
@@ -73,6 +73,24 @@ return {
             opts = {
               auto_submit_success = true,
               auto_submit_errors = true,
+            },
+          },
+          variables = {
+            ["buffer"] = {
+              opts = {
+                default_params = "watch", -- or 'pin'
+              },
+            },
+          },
+          keymaps = {
+            completion = {
+              modes = {
+                i = "<C-.>",
+              },
+              index = 1,
+              -- TODO: the completion function not work
+              callback = "keymaps.completion",
+              description = "Completion Menu",
             },
           },
         },
