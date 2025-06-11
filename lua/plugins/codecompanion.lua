@@ -135,11 +135,11 @@ return {
             show_result_in_chat = true,
           },
         },
-        vectorcode = {
-          opts = {
-            add_tool = true,
-          },
-        },
+        -- vectorcode = {
+        --   opts = {
+        --     add_tool = true,
+        --   },
+        -- },
       },
     }
   end,

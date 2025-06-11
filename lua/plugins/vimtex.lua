@@ -2,10 +2,21 @@ return {
   "lervag/vimtex",
   lazy = false,
   init = function()
-    -- VimTeX configuration goes here, e.g.
-    vim.g.vimtex_view_general_viewer = "okular"
-    vim.g.vimtex_view_general_options = "--unique file:@pdf#src:@line@tex"
-    vim.g.vimtex_quickfix_mode = 0
+      -- VimTeX configuration goes here, e.g.
+      local os_name = vim.loop.os_uname().sysname
+      if os_name == "Darwin" then
+          -- macOS - use open command to launch Skim with SyncTeX support
+          vim.g.vimtex_view_general_viewer = "open"
+          vim.g.vimtex_view_general_options = "-a Skim @pdf"
+          -- Enable SyncTeX for forward/inverse search
+          vim.g.vimtex_view_skim_sync = 1
+          vim.g.vimtex_view_skim_activate = 1
+      else
+        -- Linux - use okular
+        vim.g.vimtex_view_general_viewer = "okular"
+        vim.g.vimtex_view_general_options = "--unique file:@pdf#src:@line@tex"
+      end
+      vim.g.vimtex_quickfix_mode = 0
   end,
   dependencies = {
     "AstroNvim/astrocore",
