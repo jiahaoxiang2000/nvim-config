@@ -22,18 +22,27 @@ require("vscode-config.config.options")
 -- all built-in highlight groups may be overridden or cleared.
 -- Therefore, we define custom highlight groups instead of linking to built-in ones.
 local function setup_vscode_highlights()
-    -- Custom highlight groups for VSCode compatibility
-    vim.api.nvim_set_hl(0, "VSCodeYankHighlight", { bg = "#d19a66", fg = "#282c34" })
-    vim.api.nvim_set_hl(0, "VSCodeIlluminatedWord", { bg = "#3e4451", underline = true })
-    vim.api.nvim_set_hl(0, "VSCodeIlluminatedCurWord", { bg = "#3e4451", underline = true, bold = true })
-    vim.api.nvim_set_hl(0, "VSCodeSearchMatch", { bg = "#528bff", fg = "#ffffff" })
-    vim.api.nvim_set_hl(0, "VSCodeSearchCurrent", { bg = "#e5c07b", fg = "#282c34" })
-    vim.api.nvim_set_hl(0, "VSCodeHighlighter0", { bg = "#e06c75", fg = "#ffffff" })
-    vim.api.nvim_set_hl(0, "VSCodeHighlighter1", { bg = "#98c379", fg = "#282c34" })
-    vim.api.nvim_set_hl(0, "VSCodeHighlighter2", { bg = "#61afef", fg = "#ffffff" })
-    vim.api.nvim_set_hl(0, "VSCodeHighlighter3", { bg = "#c678dd", fg = "#ffffff" })
-    vim.api.nvim_set_hl(0, "VSCodeHighlighter4", { bg = "#e5c07b", fg = "#282c34" })
-    vim.api.nvim_set_hl(0, "VSCodeHighlighter5", { bg = "#56b6c2", fg = "#282c34" })
+    -- Custom highlight groups for colorblind accessibility
+    -- Using high contrast and colorblind-friendly color combinations
+
+    -- Bright yellow background for yank - very visible
+    vim.api.nvim_set_hl(0, "VSCodeYankHighlight", { bg = "#ffff00", fg = "#000000", bold = true })
+
+    -- Blue tint for word illumination - subtle but visible
+    vim.api.nvim_set_hl(0, "VSCodeIlluminatedWord", { bg = "#2d3748", underline = true })
+    vim.api.nvim_set_hl(0, "VSCodeIlluminatedCurWord", { bg = "#4a5568", underline = true, bold = true })
+
+    -- Bright blue for search matches - high contrast
+    vim.api.nvim_set_hl(0, "VSCodeSearchMatch", { bg = "#0066cc", fg = "#ffffff", bold = true })
+    vim.api.nvim_set_hl(0, "VSCodeSearchCurrent", { bg = "#ff9900", fg = "#000000", bold = true })
+
+    -- Colorblind-friendly highlighter colors with high contrast
+    vim.api.nvim_set_hl(0, "VSCodeHighlighter0", { bg = "#0066cc", fg = "#ffffff", bold = true }) -- Bright Blue
+    vim.api.nvim_set_hl(0, "VSCodeHighlighter1", { bg = "#ff9900", fg = "#000000", bold = true }) -- Bright Orange
+    vim.api.nvim_set_hl(0, "VSCodeHighlighter2", { bg = "#9900cc", fg = "#ffffff", bold = true }) -- Purple
+    vim.api.nvim_set_hl(0, "VSCodeHighlighter3", { bg = "#ffff00", fg = "#000000", bold = true }) -- Yellow
+    vim.api.nvim_set_hl(0, "VSCodeHighlighter4", { bg = "#000000", fg = "#ffffff", bold = true }) -- Black/White (highest contrast)
+    vim.api.nvim_set_hl(0, "VSCodeHighlighter5", { bg = "#663300", fg = "#ffffff", bold = true }) -- Brown
 end
 
 -- Yank highlight configuration
@@ -53,7 +62,10 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 vim.api.nvim_create_autocmd("TextYankPost", {
     group = augroup("yank_highlight"),
     callback = function()
-        vim.highlight.on_yank({ timeout = 500 })
+        vim.highlight.on_yank({
+            higroup = "VSCodeYankHighlight",
+            timeout = 500
+        })
     end,
 })
 
