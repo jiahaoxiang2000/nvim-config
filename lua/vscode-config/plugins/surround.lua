@@ -1,6 +1,5 @@
 -- config the surround plugin_files for neovim on the vscode
 return {
-
     "kylechui/nvim-surround",
     version = "*",      -- Use the latest version
     event = "VeryLazy", -- Load the plugin lazily
