@@ -2,10 +2,6 @@
 -- Load VSCode API and set up advanced keybindings for better integration
 local vscode = require('vscode')
 
--- ============================================================================
--- File Management & Navigation
--- ============================================================================
-
 -- Enhanced file explorer with automatic focus
 vim.keymap.set('n', '<leader>e', function()
     vscode.action('workbench.view.explorer')
@@ -17,9 +13,6 @@ vim.keymap.set('n', '<leader>fr', function()
     vscode.action('workbench.action.openRecent')
 end, { desc = 'Open recent files' })
 
--- ============================================================================
--- Search & Replace
--- ============================================================================
 
 -- Find and replace word under cursor
 vim.keymap.set('n', '<leader>sr', function()
@@ -44,9 +37,6 @@ vim.keymap.set('v', '<leader>sf', function()
     end)
 end, { desc = 'Search selection in files' })
 
--- ============================================================================
--- Code Actions & Refactoring
--- ============================================================================
 
 -- Quick fix with insert mode support
 vim.keymap.set({ 'n', 'v' }, '<leader>ca', function()
@@ -71,13 +61,25 @@ vim.keymap.set('v', '<leader>cf', function()
     vscode.action('editor.action.formatSelection')
 end, { desc = 'Format selection' })
 
--- ============================================================================
--- Multi-cursor & Selection
--- ============================================================================
+-- Go to implementation
+vim.keymap.set('n', 'gi', function()
+    vscode.action('editor.action.goToImplementation')
+end, { desc = 'Go to implementation' })
 
--- ============================================================================
--- Terminal & Tasks
--- ============================================================================
+-- Go to references
+vim.keymap.set('n', 'gr', function()
+    vscode.action('editor.action.goToReferences')
+end, { desc = 'Go to references' })
+
+-- Go to definition
+vim.keymap.set('n', 'gd', function()
+    vscode.action('editor.action.revealDefinition')
+end, { desc = 'Go to definition' })
+
+-- Show hover information (Rust docs, type info)
+vim.keymap.set('n', 'gh', function()
+    vscode.action('editor.action.showHover')
+end, { desc = 'Show hover info' })
 
 -- Toggle integrated terminal
 vim.keymap.set('n', '<leader>tt', function()
@@ -89,9 +91,6 @@ vim.keymap.set('n', '<leader>tr', function()
     vscode.action('workbench.action.tasks.runTask')
 end, { desc = 'Run task' })
 
--- ============================================================================
--- Window & Panel Management
--- ============================================================================
 
 -- Split editors with automatic focus
 vim.keymap.set('n', '<leader>wv', function()
@@ -103,12 +102,6 @@ vim.keymap.set('n', '<leader>ws', function()
     vscode.action('workbench.action.splitEditorDown')
     vscode.action('workbench.action.focusNextGroup')
 end, { desc = 'Split editor horizontally and focus' })
-
--- Panel toggles
-
--- ============================================================================
--- Git Integration
--- ============================================================================
 
 -- Git operations with better UX
 vim.keymap.set('n', '<leader>gs', function()
@@ -126,14 +119,6 @@ end, { desc = 'Git push' })
 vim.keymap.set('n', '<leader>gl', function()
     vscode.action('git.pull')
 end, { desc = 'Git pull' })
-
--- ============================================================================
--- Settings & Configuration Management
--- ============================================================================
-
--- ============================================================================
--- Advanced Workflow Examples
--- ============================================================================
 
 -- Custom workflow: Save all, format, and show notification
 vim.keymap.set('n', '<leader>wa', function()
