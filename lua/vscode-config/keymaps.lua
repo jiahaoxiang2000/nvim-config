@@ -81,6 +81,11 @@ vim.keymap.set('n', 'gh', function()
     vscode.action('editor.action.showHover')
 end, { desc = 'Show hover info' })
 
+-- to stage the selection context
+vim.keymap.set('v', 'gs', function()
+    vscode.action('git.stageSelectedRanges')
+end, { desc = 'Stage selected lines' })
+
 -- Toggle integrated terminal
 vim.keymap.set('n', '<leader>tt', function()
     vscode.action('workbench.action.terminal.toggleTerminal')
@@ -126,6 +131,17 @@ vim.keymap.set('n', '<leader>wa', function()
     vscode.action('editor.action.formatDocument')
     vscode.notify('Files saved and formatted')
 end, { desc = 'Save all and format document' })
+
+-- Compare editor navigation
+vim.keymap.set('n', ']c', function()
+    vscode.action('workbench.action.compareEditor.nextChange')
+    vscode.action('workbench.action.editor.nextChange')
+end, { desc = 'Go to next change in compare/diff editor' })
+
+vim.keymap.set('n', '[c', function()
+    vscode.action('workbench.action.compareEditor.previousChange')
+    vscode.action('workbench.action.editor.previousChange')
+end, { desc = 'Go to previous change in compare/diff editor' })
 
 -- Show current file information using JavaScript evaluation
 vim.keymap.set('n', '<leader>fi', function()
