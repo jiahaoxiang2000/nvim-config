@@ -2,6 +2,8 @@
 
 This configuration uses the `vscode-neovim` extension to enhance VSCode with Neovim capabilities, featuring colorblind-friendly highlighting and optimized plugin integrations.
 
+- references: [astro community tested plugin](https://github.com/AstroNvim/astrocommunity/blob/main/lua/astrocommunity/recipes/vscode/init.lua)
+
 ## Project Structure
 
 ```
