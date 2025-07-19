@@ -8,14 +8,14 @@ This configuration uses the `vscode-neovim` extension to enhance VSCode with Neo
 
 ```
 vscode-config/
-├── index.lua           # Main entry point with lazy.nvim setup, highlight configuration, and custom keybindings
+├── index.lua           # Main entry point with lazy.nvim setup, highlight configuration, and yank highlighting
+├── keymaps.lua         # Comprehensive VSCode API integration keybindings
 ├── config/
 │   └── options.lua     # Basic vim options and VSCode-specific settings
 └── plugins/
     ├── flash.lua       # Flash navigation plugin
     ├── surround.lua    # Text surround operations
-    ├── motions.lua     # Motion enhancements
-    ├── multi-cursor.lua # Multi-cursor support
+    ├── treewalker.lua  # Treesitter-based movement and swapping
     └── highlights.lua  # Advanced highlighting plugins (vim-illuminate, hlslens, vim-highlighter)
 ```
 
@@ -80,17 +80,12 @@ vscode-config/
   - `cs` - Change surround
   - Aliases: `b` **()**, `i` _text_
 
-- **Multi-cursor Operations**: Enhanced with `vscode-multi-cursor.nvim`
-  - `mc` - Create cursor at current position
-  - `mcc` - Cancel/Clear all cursors
-  - `mi` - Start cursors on the left
-  - `mI` - Start cursors on the left edge
-  - `ma` - Start cursors on the right
-  - `mA` - Start cursors on the right edge
-  - `[mc` - Go to previous cursor
-  - `]mc` - Go to next cursor
-  - `mcs` - Create cursor using flash navigation
-  - `mcw` - Create selection using flash navigation
+- **Treesitter Movement**: Enhanced with `treewalker.nvim`
+  - `<C-h>` / `<C-j>` / `<C-k>` / `<C-l>` - Navigate syntax tree (left/down/up/right)
+  - `<C-S-h>` / `<C-S-j>` / `<C-S-k>` / `<C-S-l>` - Swap nodes in syntax tree
+  - Brief highlight on jump (250ms duration)
+  - Automatic jumplist management for movements > 1 line
+  - Treesitter-aware navigation for precise code movement
 
 ### ✅ System Integration
 
@@ -106,14 +101,6 @@ vscode-config/
   - Disabled unnecessary vim plugins for VSCode
   - Efficient highlight group management
   - Large file handling optimizations
-
-### 🔄 Plugin Management
-
-- Uses `lazy.nvim` for efficient plugin management
-- Lazy loading enabled for better performance
-- Auto-discovery of plugin files in the `plugins/` directory
-- VSCode-specific plugin loading with `cond = vim.g.vscode`
-- Modular architecture for easy customization
 
 ### ⌨️ Built-in Custom Keybindings
 
@@ -134,6 +121,10 @@ The configuration includes a comprehensive set of custom keybindings that integr
 - `<leader>ca` - Code actions (quick fix) - supports normal and visual modes
 - `<leader>cr` - Refactor selection - supports normal and visual modes
 - `<leader>cf` - Format document (normal), format selection (visual)
+- `gd` - Go to definition
+- `gi` - Go to implementation
+- `gr` - Go to references
+- `gh` - Show hover information
 
 #### Terminal & Tasks
 
@@ -151,13 +142,21 @@ The configuration includes a comprehensive set of custom keybindings that integr
 - `<leader>gc` - Commit staged changes
 - `<leader>gp` - Git push
 - `<leader>gl` - Git pull
+- `gs` (visual mode) - Stage selected lines
+
+#### Diagnostic Navigation
+
+- `]d` - Go to next diagnostic
+- `[d` - Go to previous diagnostic
+- `]c` - Go to next change in compare/diff editor
+- `[c` - Go to previous change in compare/diff editor
 
 #### Advanced Workflows
 
 - `<leader>wa` - Save all and format document
 - `<leader>fi` - Show current file information (displays file name, line count, language, and selection status)
 
-**Note**: All custom keybindings use the VSCode API for seamless integration and include proper insert mode handling with `vscode.with_insert()` where appropriate. The keybindings are organized into logical sections for better workflow integration.
+**Note**: All custom keybindings use the VSCode API for seamless integration and include proper insert mode handling with `vscode.with_insert()` where appropriate. The keybindings are organized into logical sections for better workflow integration. These keybindings are defined in `keymaps.lua` and loaded automatically.
 
 ## Highlight Color Palette (Colorblind-Friendly)
 
@@ -172,13 +171,6 @@ The configuration includes a comprehensive set of custom keybindings that integr
 | Highlighter 3  | `#ffff00` (Yellow) | `#000000` (Black) | Quaternary            |
 | Highlighter 4  | `#000000` (Black)  | `#ffffff` (White) | High contrast         |
 | Highlighter 5  | `#663300` (Brown)  | `#ffffff` (White) | Earth tone            |
-
-## Mode Reference
-
-- **"n"**: Normal mode
-- **"x"**: Visual mode
-- **"o"**: Operator-pending mode
-- **"c"**: Command-line mode
 
 ## Installation
 
@@ -329,17 +321,6 @@ Use these VS Code commands for troubleshooting keybinding conflicts:
 - `Developer: Toggle Keyboard Shortcuts Troubleshooting` - Traces keypress processing
 - `Developer: Inspect Key Mapping` - Shows current keyboard layout mappings
 - Check the Output panel → "vscode-neovim" for extension logs
-
-## Development Notes
-
-- Configuration is designed specifically for VSCode integration
-- All highlight groups use custom VSCode-compatible names
-- Colorblind accessibility is a primary design consideration
-- Performance optimizations included for VSCode environment
-- Modular plugin structure allows easy addition/removal of features
-- All plugins are configured with `cond = vim.g.vscode` for proper loading
-- **Custom keybindings are integrated directly into `index.lua`** - No need to require additional files
-- Clean, streamlined configuration with all features built-in
 
 ## Usage
 
