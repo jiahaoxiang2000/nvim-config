@@ -31,5 +31,4 @@ else
   end
 
   require "lazy_setup"
-  require "polish"
 end
