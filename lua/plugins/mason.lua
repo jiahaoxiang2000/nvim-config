@@ -11,11 +11,13 @@ return {
 				"rust-analyzer",
 				"markdown-oxide",
 				"tinymist",
+				"texlab",
 
 				-- Formatters
 				"stylua",
 				"prettier",
 				"black",
+				"latexindent",
 
 				-- Linters
 				"eslint_d",
