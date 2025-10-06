@@ -10,6 +10,23 @@ return {
           breakindent = true, -- Preserve indentation for wrapped lines
         },
       },
+      autocmds = {
+        autosave_with_format = {
+          {
+            event = { "InsertLeave" },
+            desc = "Auto save and format on leaving insert",
+            callback = function()
+              -- Only save if file is modifiable and has a name
+              if vim.bo.modifiable and vim.fn.expand("%") ~= "" and not vim.bo.readonly then
+                -- Format first
+                vim.lsp.buf.format({ async = false })
+                -- Then save
+                vim.cmd("silent! write")
+              end
+            end,
+          },
+        },
+      },
       mappings = {
         n = {
           -- Ctrl+w to close buffer
