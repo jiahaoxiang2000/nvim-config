@@ -1,3 +1,4 @@
+local toggle_key = "<C-,>"
 return {
   "coder/claudecode.nvim",
   dependencies = { "folke/snacks.nvim" },
@@ -23,7 +24,29 @@ return {
       split_width_percentage = 0.50,
       provider = "auto", -- "auto", "snacks", "native", "external", "none", or custom provider table
       auto_close = true,
-      snacks_win_opts = {}, -- Opts to pass to `Snacks.terminal.open()` - see Floating Window section below
+      snacks_win_opts = {
+        position = "right",
+        width = 0.5,
+        height = 1,
+        keys = {
+          claude_hide = {
+            toggle_key,
+            function(self)
+              self:hide()
+            end,
+            mode = "t",
+            desc = "Hide",
+          },
+          terminal_normal = {
+            "<C-n>",
+            function(self)
+              vim.cmd("stopinsert")
+            end,
+            mode = "t",
+            desc = "Enter normal mode",
+          },
+        },
+      }, -- Opts to pass to `Snacks.terminal.open()` - see Floating Window section below
 
       -- Provider-specific options
       provider_opts = {
@@ -46,6 +69,7 @@ return {
     { "<leader>a", nil, desc = "AI/Claude Code" },
     { "<leader>ac", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude" },
     { "<leader>af", "<cmd>ClaudeCodeFocus<cr>", desc = "Focus Claude" },
+    { toggle_key, "<cmd>ClaudeCodeFocus<cr>", desc = "Claude Code", mode = { "n", "x" } },
     { "<leader>ar", "<cmd>ClaudeCode --resume<cr>", desc = "Resume Claude" },
     { "<leader>aC", "<cmd>ClaudeCode --continue<cr>", desc = "Continue Claude" },
     { "<leader>am", "<cmd>ClaudeCodeSelectModel<cr>", desc = "Select Claude model" },
