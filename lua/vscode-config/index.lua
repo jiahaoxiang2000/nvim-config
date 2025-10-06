@@ -84,7 +84,13 @@ require("lazy").setup({
         missing = true,
     },
     checker = {
-        enabled = false,
+        enabled = false,  -- Disable update checker to prevent UI prompts
+    },
+    change_detection = {
+        enabled = false,  -- Disable change detection to prevent UI notifications
+    },
+    ui = {
+        border = "none",  -- Disable borders to prevent TUI issues in VSCode
     },
     performance = {
         rtp = {
