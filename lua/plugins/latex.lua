@@ -4,6 +4,11 @@ return {
 	{
 		"AstroNvim/astrolsp",
 		opts = {
+			mappings = {
+				n = {
+					["<leader>w"] = { name = "Writing" },
+				},
+			},
 			config = {
 				texlab = {
 					cmd = { "texlab" },
@@ -47,7 +52,7 @@ return {
 									vim.notify("Build failed", vim.log.levels.WARN)
 								end
 							end, bufnr)
-						end, { desc = "[L]aTeX [B]uild", noremap = true, buffer = bufnr })
+						end, { desc = "[W]riting LaTeX [B]uild", noremap = true, buffer = bufnr })
 
 						vim.keymap.set("n", "<leader>wv", function()
 							local params = vim.lsp.util.make_position_params(0, client.offset_encoding)
@@ -56,7 +61,7 @@ return {
 									vim.notify("Forward search error: " .. vim.inspect(err), vim.log.levels.ERROR)
 								end
 							end, bufnr)
-						end, { desc = "[Writing] LaTeX [V]iew (forward search)", noremap = true, buffer = bufnr })
+						end, { desc = "[W]riting LaTeX [V]iew (forward search)", noremap = true, buffer = bufnr })
 					end,
 				},
 			},
