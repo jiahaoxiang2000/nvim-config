@@ -1,69 +1,64 @@
 return {
-  "greggh/claude-code.nvim",
-  dependencies = {
-    "nvim-lua/plenary.nvim", -- Required for git operations
-  },
-  config = function()
-    require("claude-code").setup({
-      -- Terminal window settings
-      window = {
-        split_ratio = 0.5,      -- Percentage of screen for the terminal window (height for horizontal, width for vertical splits)
-        position = "vertical",  -- Position of the window: "botright", "topleft", "vertical", "float", etc.
-        enter_insert = true,    -- Whether to enter insert mode when opening Claude Code
-        hide_numbers = true,    -- Hide line numbers in the terminal window
-        hide_signcolumn = true, -- Hide the sign column in the terminal window
-        
-        -- Floating window configuration (only applies when position = "float")
-        float = {
-          width = "80%",        -- Width: number of columns or percentage string
-          height = "80%",       -- Height: number of rows or percentage string
-          row = "center",       -- Row position: number, "center", or percentage string
-          col = "center",       -- Column position: number, "center", or percentage string
-          relative = "editor",  -- Relative to: "editor" or "cursor"
-          border = "rounded",   -- Border style: "none", "single", "double", "rounded", "solid", "shadow"
-        },
-      },
-      -- File refresh settings
-      refresh = {
-        enable = true,           -- Enable file change detection
-        updatetime = 100,        -- updatetime when Claude Code is active (milliseconds)
-        timer_interval = 1000,   -- How often to check for file changes (milliseconds)
-        show_notifications = true, -- Show notification when files are reloaded
-      },
-      -- Git project settings
-      git = {
-        use_git_root = true,     -- Set CWD to git root when opening Claude Code (if in git project)
-      },
-      -- Shell-specific settings
-      shell = {
-        separator = '&&',        -- Command separator used in shell commands
-        pushd_cmd = 'pushd',     -- Command to push directory onto stack (e.g., 'pushd' for bash/zsh, 'enter' for nushell)
-        popd_cmd = 'popd',       -- Command to pop directory from stack (e.g., 'popd' for bash/zsh, 'exit' for nushell)
-      },
-      -- Command settings
-      command = "zsh -c 'http_proxy=http://localhost:1080 https_proxy=http://localhost:1080 claude'",        -- Command used to launch Claude Code
-      -- Command variants
-      command_variants = {
-        -- Conversation management
-        continue = "--continue", -- Resume the most recent conversation
-        resume = "--resume",     -- Display an interactive conversation picker
+  "coder/claudecode.nvim",
+  dependencies = { "folke/snacks.nvim" },
+  config = true,
+  opts = {
+    
+    -- Server Configuration
+    port_range = { min = 10000, max = 65535 },
+    auto_start = true,
+    log_level = "info", -- "trace", "debug", "info", "warn", "error"
+    terminal_cmd = "http_proxy=http://localhost:1080 https_proxy=http://localhost:1080 claude", -- Custom terminal command (default: "claude")
+                        -- For local installations: "~/.claude/local/claude"
+                        -- For native binary: use output from 'which claude'
+    -- Send/Focus Behavior
+    -- When true, successful sends will focus the Claude terminal if already connected
+    focus_after_send = true,
+    -- Selection Tracking
+    track_selection = true,
+    visual_demotion_delay_ms = 50,
+    -- Terminal Configuration
+    terminal = {
+      split_side = "right", -- "left" or "right"
+      split_width_percentage = 0.50,
+      provider = "auto", -- "auto", "snacks", "native", "external", "none", or custom provider table
+      auto_close = true,
+      snacks_win_opts = {}, -- Opts to pass to `Snacks.terminal.open()` - see Floating Window section below
 
-        -- Output options
-        verbose = "--verbose",   -- Enable verbose logging with full turn-by-turn output
+      -- Provider-specific options
+      provider_opts = {
+        -- Command for external terminal provider. Can be:
+        -- 1. String with %s placeholder: "alacritty -e %s" (backward compatible)
+        -- 2. String with two %s placeholders: "alacritty --working-directory %s -e %s" (cwd, command)
+        -- 3. Function returning command: function(cmd, env) return "alacritty -e " .. cmd end
+        external_terminal_cmd = nil,
       },
-      -- Keymaps
-      keymaps = {
-        toggle = {
-          normal = "<C-,>",       -- Normal mode keymap for toggling Claude Code, false to disable
-          terminal = "<C-,>",     -- Terminal mode keymap for toggling Claude Code, false to disable
-          variants = {
-            continue = "<leader>cC", -- Normal mode keymap for Claude Code with continue flag
-            verbose = "<leader>cV",  -- Normal mode keymap for Claude Code with verbose flag
-          },
-        },
-        window_navigation = true, -- Enable window navigation keymaps (<C-h/j/k/l>)
-        scrolling = true,         -- Enable scrolling keymaps (<C-f/b>) for page up/down
-      }
-    })
-  end
+    },
+    -- Diff Integration
+    diff_opts = {
+      auto_close_on_accept = true,
+      vertical_split = true,
+      open_in_current_tab = true,
+      keep_terminal_focus = false, -- If true, moves focus back to terminal after diff opens
+    },
+  },
+  keys = {
+    { "<leader>a", nil, desc = "AI/Claude Code" },
+    { "<leader>ac", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude" },
+    { "<leader>af", "<cmd>ClaudeCodeFocus<cr>", desc = "Focus Claude" },
+    { "<leader>ar", "<cmd>ClaudeCode --resume<cr>", desc = "Resume Claude" },
+    { "<leader>aC", "<cmd>ClaudeCode --continue<cr>", desc = "Continue Claude" },
+    { "<leader>am", "<cmd>ClaudeCodeSelectModel<cr>", desc = "Select Claude model" },
+    { "<leader>ab", "<cmd>ClaudeCodeAdd %<cr>", desc = "Add current buffer" },
+    { "<leader>as", "<cmd>ClaudeCodeSend<cr>", mode = "v", desc = "Send to Claude" },
+    {
+      "<leader>as",
+      "<cmd>ClaudeCodeTreeAdd<cr>",
+      desc = "Add file",
+      ft = { "NvimTree", "neo-tree", "oil", "minifiles", "netrw" },
+    },
+    -- Diff management
+    { "<leader>aa", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
+    { "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>", desc = "Deny diff" },
+  },
 }
