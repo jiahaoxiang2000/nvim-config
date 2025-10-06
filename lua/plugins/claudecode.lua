@@ -8,7 +8,7 @@ return {
 		-- Server Configuration
 		port_range = { min = 10000, max = 65535 },
 		auto_start = true,
-		log_level = "info",                                                                       -- "trace", "debug", "info", "warn", "error"
+		log_level = "info", -- "trace", "debug", "info", "warn", "error"
 		terminal_cmd = "http_proxy=http://localhost:1080 https_proxy=http://localhost:1080 claude", -- Custom terminal command (default: "claude")
 		-- For local installations: "~/.claude/local/claude"
 		-- For native binary: use output from 'which claude'
@@ -21,7 +21,7 @@ return {
 		-- Terminal Configuration
 		terminal = {
 			split_side = "right", -- "left" or "right"
-			split_width_percentage = 0.50,
+			split_width_percentage = 0.35,
 			provider = "auto", -- "auto", "snacks", "native", "external", "none", or custom provider table
 			auto_close = true,
 			snacks_win_opts = {
@@ -66,15 +66,15 @@ return {
 		},
 	},
 	keys = {
-		{ "<leader>a",  nil,                              desc = "AI/Claude Code" },
-		{ "<leader>ac", "<cmd>ClaudeCode<cr>",            desc = "Toggle Claude" },
-		{ "<leader>af", "<cmd>ClaudeCodeFocus<cr>",       desc = "Focus Claude" },
-		{ toggle_key,   "<cmd>ClaudeCodeFocus<cr>",       desc = "Claude Code",        mode = { "n", "x" } },
-		{ "<leader>ar", "<cmd>ClaudeCode --resume<cr>",   desc = "Resume Claude" },
+		{ "<leader>a", nil, desc = "AI/Claude Code" },
+		{ "<leader>ac", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude" },
+		{ "<leader>af", "<cmd>ClaudeCodeFocus<cr>", desc = "Focus Claude" },
+		{ toggle_key, "<cmd>ClaudeCodeFocus<cr>", desc = "Claude Code", mode = { "n", "x" } },
+		{ "<leader>ar", "<cmd>ClaudeCode --resume<cr>", desc = "Resume Claude" },
 		{ "<leader>aC", "<cmd>ClaudeCode --continue<cr>", desc = "Continue Claude" },
 		{ "<leader>am", "<cmd>ClaudeCodeSelectModel<cr>", desc = "Select Claude model" },
-		{ "<leader>ab", "<cmd>ClaudeCodeAdd %<cr>",       desc = "Add current buffer" },
-		{ "<leader>as", "<cmd>ClaudeCodeSend<cr>",        mode = "v",                  desc = "Send to Claude" },
+		{ "<leader>ab", "<cmd>ClaudeCodeAdd %<cr>", desc = "Add current buffer" },
+		{ "<leader>as", "<cmd>ClaudeCodeSend<cr>", mode = "v", desc = "Send to Claude" },
 		{
 			"<leader>as",
 			"<cmd>ClaudeCodeTreeAdd<cr>",
@@ -83,6 +83,6 @@ return {
 		},
 		-- Diff management
 		{ "<leader>aa", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
-		{ "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>",   desc = "Deny diff" },
+		{ "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>", desc = "Deny diff" },
 	},
 }
