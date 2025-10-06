@@ -5,9 +5,11 @@ return {
     opts = {
       options = {
         opt = {
-          wrap = true,   -- Enable line wrapping
+          wrap = true,    -- Enable line wrapping
           linebreak = true, -- Break lines at word boundaries
           breakindent = true, -- Preserve indentation for wrapped lines
+          spell = true,   -- Enable spell checking
+          spelllang = "en_us", -- Set spell check language
         },
       },
       autocmds = {
