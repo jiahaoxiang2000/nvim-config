@@ -18,10 +18,12 @@ return {
 				"prettier",
 				"black",
 				"latexindent",
+				"rustfmt",
 
 				-- Linters
 				"eslint_d",
 				"markdownlint",
+				"bacon",
 			},
 		},
 	},
