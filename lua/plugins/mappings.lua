@@ -20,6 +20,14 @@ return {
     },
   },
   {
+    "folke/which-key.nvim",
+    opts = {
+      spec = {
+        { "<Leader>w", group = "Writing" },
+      },
+    },
+  },
+  {
     "AstroNvim/astrolsp",
     ---@type AstroLSPOpts
     opts = {
