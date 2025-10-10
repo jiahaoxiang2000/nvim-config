@@ -20,9 +20,10 @@ Refer to the [documentation](https://lazyvim.github.io/installation) to get star
 | `neo-tree.lua`   | File tree config (show hidden files, hide gitignored)                            |
 | `typst.lua`      | Typst support via tinymist LSP with live preview                                 |
 
-## Video
+## Intro Video
 
 - [vscode-nvim-function-introduction](https://www.bilibili.com/video/BV1eVudzWE8u)
+- [My IDE Journey: From JetBrains IDEs to NeoVim + Claude Code](https://www.bilibili.com/video/BV19PxRzbEfF)
 
 ## Reference
 
