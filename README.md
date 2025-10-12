@@ -12,12 +12,14 @@ Refer to the [documentation](https://lazyvim.github.io/installation) to get star
 | `astrotheme.lua` | GitHub colorblind theme (protanopia/deuteranopia friendly)                       |
 | `astroui.lua`    | Custom highlights (yank, visual, search) with high contrast colors               |
 | `claudecode.lua` | Claude Code AI integration with Snacks terminal provider                         |
+| `flash.lua`      | Fast motion/jumping with fuzzy search and autojump navigation                    |
 | `latex.lua`      | LaTeX support via texlab LSP (build, forward search with Okular)                 |
 | `mappings.lua`   | Custom keybindings (save with Ctrl+S, LSP hover/declaration)                     |
 | `mason.lua`      | Auto-install LSP servers, formatters, linters (Lua, Python, Rust, Typst)         |
 | `minuet.lua`     | DeepSeek AI completion with FIM (Fill-in-the-Middle)                             |
 | `misc.lua`       | Colorful window separators                                                       |
 | `neo-tree.lua`   | File tree config (show hidden files, hide gitignored)                            |
+| `treewalker.lua` | AST-based navigation using Treesitter with visual highlighting                   |
 | `typst.lua`      | Typst support via tinymist LSP with live preview                                 |
 
 ## Intro Video
