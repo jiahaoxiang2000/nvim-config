@@ -28,6 +28,15 @@ return {
 			on_attach = function(bufnr)
 				local gitsigns = require("gitsigns")
 
+				-- Navigation between git hunks
+				vim.keymap.set("n", "]g", function()
+					gitsigns.nav_hunk("next")
+				end, { buffer = bufnr, desc = "Next git hunk" })
+
+				vim.keymap.set("n", "[g", function()
+					gitsigns.nav_hunk("prev")
+				end, { buffer = bufnr, desc = "Previous git hunk" })
+
 				-- Enable word diff for better granularity
 				vim.keymap.set("n", "<leader>gw", function()
 					gitsigns.toggle_word_diff()
