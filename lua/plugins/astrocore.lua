@@ -5,10 +5,10 @@ return {
 		opts = {
 			options = {
 				opt = {
-					wrap = true, -- Enable line wrapping
+					wrap = true,    -- Enable line wrapping
 					linebreak = true, -- Break lines at word boundaries
 					breakindent = true, -- Preserve indentation for wrapped lines
-					spell = false, -- Enable spell checking
+					spell = false,  -- Enable spell checking
 					spelllang = "en_us", -- Set spell check language
 				},
 			},
@@ -75,6 +75,19 @@ return {
 							require("astrocore.buffer").close()
 						end,
 						desc = "Close buffer",
+					},
+					-- Close all buffers except current
+					["<C-S-w>"] = {
+						function()
+							local current_buf = vim.api.nvim_get_current_buf()
+							local bufs = vim.t.bufs or {}
+							for _, bufnr in ipairs(bufs) do
+								if bufnr ~= current_buf then
+									require("astrocore.buffer").close(bufnr)
+								end
+							end
+						end,
+						desc = "Close all buffers except current",
 					},
 					-- Alt+number to switch to Nth buffer in the list
 					["<A-1>"] = {

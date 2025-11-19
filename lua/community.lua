@@ -12,4 +12,5 @@ return {
 	{ import = "astrocommunity.pack.python" },
 	{ import = "astrocommunity.pack.rust" },
 	{ import = "astrocommunity.pack.toml" },
+	{ import = "astrocommunity.pack.java" },
 }
