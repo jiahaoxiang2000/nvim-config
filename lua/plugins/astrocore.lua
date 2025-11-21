@@ -5,10 +5,10 @@ return {
 		opts = {
 			options = {
 				opt = {
-					wrap = true,    -- Enable line wrapping
+					wrap = true, -- Enable line wrapping
 					linebreak = true, -- Break lines at word boundaries
 					breakindent = true, -- Preserve indentation for wrapped lines
-					spell = false,  -- Enable spell checking
+					spell = false, -- Enable spell checking
 					spelllang = "en_us", -- Set spell check language
 				},
 			},
@@ -69,6 +69,8 @@ return {
 			},
 			mappings = {
 				n = {
+					-- Disable default <leader>q to avoid conflict with CodeQL mappings
+					-- ["<Leader>q"] = false,
 					-- Ctrl+w to close buffer
 					["<C-w>"] = {
 						function()
