@@ -16,14 +16,12 @@ return {
 					filetypes = { "ql", "qll" },
 					root_dir = function(fname)
 						return vim.fs.dirname(vim.fs.find({ "qlpack.yml", ".git" }, { upward = true, path = fname })[1])
-							or vim.fn.getcwd()
+								or vim.fn.getcwd()
 					end,
 					settings = {
-						codeQL = {
-							searchPath = {
-								"/opt/codeql",
-								vim.fn.expand("~/.codeql"),
-							},
+						additional_packs = {
+							"/opt/codeql",
+							vim.fn.expand("~/.codeql/packages/"),
 						},
 					},
 				},
