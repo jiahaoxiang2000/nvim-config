@@ -74,4 +74,45 @@ return {
 			end,
 		},
 	},
+	{
+		"sindrets/diffview.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewFileHistory", "DiffviewFocusFiles", "DiffviewRefresh" },
+		keys = {
+			{ "<leader>gD", "<cmd>DiffviewOpen<cr>",          desc = "Diffview Open" },
+			{ "<leader>gH", "<cmd>DiffviewFileHistory %<cr>", desc = "File History (current)" },
+			{ "<leader>gh", "<cmd>DiffviewFileHistory<cr>",   desc = "File History (all)" },
+			{ "<leader>gq", "<cmd>DiffviewClose<cr>",         "Diffview Close" },
+		},
+		opts = {
+			enhanced_diff_hl = true, -- Better syntax highlighting in diffs
+			view = {
+				default = {
+					layout = "diff2_horizontal",
+				},
+				file_history = {
+					layout = "diff2_horizontal",
+				},
+			},
+			file_panel = {
+				listing_style = "list", -- 'list' or 'tree'
+				tree_options = {
+					flatten_dirs = true,
+					folder_statuses = "only_folded",
+				},
+				win_config = {
+					position = "bottom",
+					width = 15,
+					height = 5,
+				},
+			},
+			hooks = {
+				-- Enable line wrapping in diff views
+				diff_buf_read = function()
+					vim.opt_local.wrap = true
+					vim.opt_local.linebreak = true
+				end,
+			},
+		},
+	},
 }
