@@ -13,9 +13,9 @@ return {
           },
         },
       })
-      -- Dark colorblind theme for protanopia & deuteranopia (red-green color blindness)
-      vim.cmd("colorscheme github_dark_colorblind")
-      -- Alternative: vim.cmd('colorscheme github_light_colorblind')
+      -- colorblind theme for protanopia & deuteranopia (red-green color blindness)
+      -- vim.cmd("colorscheme github_dark_colorblind")
+      vim.cmd("colorscheme github_light_colorblind")
     end,
   },
 }
