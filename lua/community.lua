@@ -15,4 +15,5 @@ return {
 	{ import = "astrocommunity.pack.java" },
 	{ import = "astrocommunity.pack.typescript" },
 	{ import = "astrocommunity.pack.godot" },
+	{ import = "astrocommunity.pack.cpp" },
 }
