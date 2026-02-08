@@ -1,4 +1,10 @@
 -- Minuet AI completion plugin configuration with DeepSeek
+local deepseek_api_key = vim.env.DEEPSEEK_API_KEY
+
+if not deepseek_api_key or deepseek_api_key == "" then
+  return {}
+end
+
 return {
   {
     "milanglacier/minuet-ai.nvim",
@@ -28,7 +34,7 @@ return {
         -- Provider-specific options for DeepSeek
         provider_options = {
           openai_fim_compatible = {
-            api_key = "DEEPSEEK_API_KEY",
+            api_key = deepseek_api_key,
             model = "deepseek-chat",
             end_point = "https://api.deepseek.com/beta/completions",
             name = "Deepseek",
