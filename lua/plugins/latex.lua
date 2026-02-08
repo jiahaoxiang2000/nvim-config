@@ -24,10 +24,27 @@ return {
                 },
                 onSave = true,
               },
-              forwardSearch = {
-                executable = "okular",
-                args = { "--unique", "file:%p#src:%l%f" },
-              },
+              forwardSearch = (function()
+                local skim_displayline = "/Applications/Skim.app/Contents/SharedSupport/displayline"
+                if vim.fn.has("mac") == 1 then
+                  if vim.uv.fs_stat(skim_displayline) then
+                    return {
+                      executable = skim_displayline,
+                      args = { "%l", "%p", "%f" },
+                    }
+                  end
+
+                  return {
+                    executable = "open",
+                    args = { "-a", "Preview", "%p" },
+                  }
+                end
+
+                return {
+                  executable = "okular",
+                  args = { "--unique", "file:%p#src:%l%f" },
+                }
+              end)(),
               chktex = {
                 onOpenAndSave = true,
                 onEdit = false,
