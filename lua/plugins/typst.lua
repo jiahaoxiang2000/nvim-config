@@ -12,20 +12,19 @@ return {
             semanticTokens = "disable",
           },
           on_attach = function(client, bufnr)
+            local function exec_tinymist(command, arguments)
+              client.request("workspace/executeCommand", {
+                command = command,
+                arguments = arguments,
+              }, nil, bufnr)
+            end
+
             vim.keymap.set("n", "<leader>wm", function()
-              client:exec_cmd({
-                title = "pin",
-                command = "tinymist.pinMain",
-                arguments = { vim.api.nvim_buf_get_name(0) },
-              }, { bufnr = bufnr })
+              exec_tinymist("tinymist.pinMain", { vim.api.nvim_buf_get_name(0) })
             end, { desc = "[W]riting Typst Pin [M]ain", noremap = true, buffer = bufnr })
 
             vim.keymap.set("n", "<leader>wu", function()
-              client:exec_cmd({
-                title = "unpin",
-                command = "tinymist.pinMain",
-                arguments = { vim.v.null },
-              }, { bufnr = bufnr })
+              exec_tinymist("tinymist.pinMain", { vim.v.null })
             end, { desc = "[W]riting Typst [U]npin", noremap = true, buffer = bufnr })
           end,
         },
