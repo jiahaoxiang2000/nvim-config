@@ -31,6 +31,9 @@ return {
     "AstroNvim/astrolsp",
     ---@type AstroLSPOpts
     opts = {
+      formatting = {
+        format_on_save = false,
+      },
       mappings = {
         n = {
           -- this mapping will only be set in buffers with an LSP attached

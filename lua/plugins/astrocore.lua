@@ -13,10 +13,10 @@ return {
 				},
 			},
 			autocmds = {
-				autosave_with_format = {
+				autosave = {
 					{
 						event = { "InsertLeave", "TextChanged" },
-						desc = "Auto save and format on leaving insert or text change",
+						desc = "Auto save on leaving insert or text change",
 						callback = function()
 							local bufnr = vim.api.nvim_get_current_buf()
 							local bufname = vim.api.nvim_buf_get_name(bufnr)
@@ -41,22 +41,6 @@ return {
 								-- Check again if buffer is still valid
 								if not vim.api.nvim_buf_is_valid(bufnr) or not vim.bo[bufnr].modified then
 									return
-								end
-
-								-- Check if LSP clients with formatting capability are attached
-								local clients = vim.lsp.get_clients({ bufnr = bufnr })
-								local has_formatter = false
-
-								for _, client in ipairs(clients) do
-									if client.server_capabilities.documentFormattingProvider then
-										has_formatter = true
-										break
-									end
-								end
-
-								-- Format first if formatter is available
-								if has_formatter then
-									vim.lsp.buf.format({ async = false, bufnr = bufnr })
 								end
 
 								-- Save the buffer

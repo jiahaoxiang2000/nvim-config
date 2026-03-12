@@ -79,7 +79,7 @@ return {
 				},
 				max_ram = 32000,
 				job_timeout = 15000,
-				format_on_save = true,
+				format_on_save = false,
 				additional_packs = {
 					vim.fn.expand("~/.codeql"),
 				},
