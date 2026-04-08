@@ -1,49 +1,21 @@
--- Mason configuration for managing LSP servers, DAP servers, linters, and formatters
+---@type LazySpec
 return {
-	{
-		"williamboman/mason.nvim",
-		opts = {
-			-- Ensure these tools are installed
-			ensure_installed = {
-				-- LSP Servers
-				"lua-language-server",
-				"pyright",
-				"rust-analyzer",
-				"tinymist",
-				"texlab",
-
-				-- Formatters
-				"stylua",
-				"prettier",
-				"black",
-				"latexindent",
-
-				-- Linters
-				"eslint_d",
-				"bacon",
-			},
-		},
-		config = function(_, opts)
-			require("mason").setup(opts)
-			-- Trigger auto-install on startup
-			vim.schedule(function()
-				local mr = require("mason-registry")
-				mr:on("package:install:success", function()
-					vim.defer_fn(function()
-						require("lazy.core.handler.event").trigger({
-							event = "FileType",
-							buf = vim.api.nvim_get_current_buf(),
-						})
-					end, 100)
-				end)
-
-				for _, tool in ipairs(opts.ensure_installed) do
-					local p = mr.get_package(tool)
-					if not p:is_installed() then
-						p:install()
-					end
-				end
-			end)
-		end,
-	},
+  {
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    opts = {
+      ensure_installed = {
+        "lua-language-server",
+        "pyright",
+        "rust-analyzer",
+        "tinymist",
+        "texlab",
+        "stylua",
+        "prettier",
+        "black",
+        "latexindent",
+        "eslint_d",
+        "bacon",
+      },
+    },
+  },
 }
