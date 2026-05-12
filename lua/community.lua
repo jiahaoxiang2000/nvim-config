@@ -16,4 +16,5 @@ return {
 	{ import = "astrocommunity.pack.typescript" },
 	{ import = "astrocommunity.pack.godot" },
 	{ import = "astrocommunity.pack.cpp" },
+	{ import = "astrocommunity.pack.go" },
 }
