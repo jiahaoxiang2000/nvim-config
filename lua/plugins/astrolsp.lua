@@ -15,9 +15,19 @@ local function find_root(source, markers)
 end
 
 ---@param markers string[]
----@return fun(bufnr: integer, on_dir: fun(root_dir: string))
+---@return fun(source: string|integer, on_dir: fun(root_dir: string)|integer): string?
 local function root_dir(markers)
-  return function(bufnr, on_dir) on_dir(find_root(bufnr, markers)) end
+  -- Support both calling conventions:
+  --   native vim.lsp.config: root_dir(bufnr, on_dir) where on_dir is a callback
+  --   legacy nvim-lspconfig: root_dir(filename, bufnr) which expects a return value
+  return function(source, on_dir)
+    local root = find_root(source, markers)
+    if type(on_dir) == "function" then
+      on_dir(root)
+    else
+      return root
+    end
+  end
 end
 
 ---@param client vim.lsp.Client
