@@ -256,4 +256,30 @@ return {
       { "<leader>wn", "<cmd>TypstPreviewNoFollowCursor<cr>", desc = "[W]riting Typst [N]o Follow Cursor", ft = "typst" },
     },
   },
+  {
+    -- Zoxide-driven project switcher: jump to a frecency-ranked directory and
+    -- restore that directory's resession "dirsession" (buffers + layout).
+    -- Shares ~/.local/share/zoxide/db.zo with the shell, so `z` history is in sync.
+    "jvgrootveld/telescope-zoxide",
+    dependencies = { "nvim-telescope/telescope.nvim", "stevearc/resession.nvim" },
+    keys = {
+      { "<Leader>fz", "<Cmd>Telescope zoxide list<CR>", desc = "Zoxide → cd + load session" },
+    },
+    config = function()
+      require("telescope._extensions.zoxide.config").setup {
+        mappings = {
+          default = {
+            action = function(selection)
+              vim.cmd.cd(selection.path)
+              -- Load the dirsession for this directory if one was saved.
+              -- silence_errors + pcall keep it quiet for dirs without a session.
+              pcall(require("resession").load, selection.path, { dir = "dirsession", silence_errors = true })
+            end,
+            after_action = function(selection) vim.notify("cd → " .. selection.path, vim.log.levels.INFO) end,
+          },
+        },
+      }
+      require("telescope").load_extension "zoxide"
+    end,
+  },
 }
